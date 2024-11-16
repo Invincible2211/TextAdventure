@@ -23,5 +23,7 @@ class Player:
             map_manager.update_tile(self.x, self.y, " ")  # Altes Feld freigeben
             map_manager.update_tile(new_x, new_y, self.symbol)  # Neues Feld besetzen
             self.x, self.y = new_x, new_y
+            # Karte scrollen, damit der Spieler immer in der Mitte bleibt
+            map_manager.scroll_to_position(self.x, self.y)
             return True
         return False
