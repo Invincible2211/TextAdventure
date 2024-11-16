@@ -85,24 +85,14 @@ class UIManager:
         print(" " * self.padding + f"╚{'═' * self.scene_width}╝")
 
     def render_sub_scene(self, sub_scene, actions):
-        """
-        Rendert den Log rechts neben der Karte und den Aktionen.
-        """
         # Log-Border oben
         move_cursor_to_position(self.scene_width + 2 * self.padding + 1, 1)
         print(f"╔{str(sub_scene.get_title()).center(self.sub_scene_width,'═')}╗")
         for i in range(self.sub_scene_height):
-            sub_scene_line = str(sub_scene.get_line(i))
+            sub_scene_content = "" + sub_scene.get_line(i)
+            sub_scene_line = sub_scene_content if len(sub_scene_content) == self.sub_scene_width else " " + sub_scene_content
             move_cursor_to_position(self.scene_width + 2 * self.padding + 1, i + 2)
             print(f"║{sub_scene_line.ljust(self.sub_scene_width)}║")
         # sub scene border unten
         move_cursor_to_position(self.scene_width + 2 * self.padding + 1, self.sub_scene_height + 2)
         print(f"╚{'═' * self.sub_scene_width}╝")
-
-    def _get_log_line(self, index, log_manager):
-        """
-        Holt die Log-Zeile für einen bestimmten Index, falls vorhanden, sonst eine leere Zeile.
-        """
-        if index < len(log_manager.logs):
-            return (" " + log_manager.logs[index]).ljust(self.sub_scene_width)
-        return " " * self.sub_scene_width

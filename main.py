@@ -1,6 +1,6 @@
+import os
 import sys
 import time
-
 import keyboard
 
 from config import Config
@@ -13,6 +13,22 @@ from map_scene import MapScene
 from player import Player
 from ui_manager import UIManager, clear_screen, set_scene_dirty, set_actions_dirty, set_sub_scene_dirty
 
+# Für Unix (Linux/macOS)
+if os.name == 'posix':
+    import termios
+
+    def reset_input():
+        """Leert den Eingabepuffer auf Unix-Systemen (Linux/macOS)."""
+        termios.tcflush(sys.stdin, termios.TCIFLUSH)
+
+# Für Windows
+elif os.name == 'nt':
+    import msvcrt
+
+    def reset_input():
+        """Leert den Eingabepuffer auf Windows-Systemen."""
+        while msvcrt.kbhit():
+            msvcrt.getch()  # Liest ein Zeichen und verwirft es
 
 def main():
     # Initialisierung
@@ -59,7 +75,7 @@ def main():
 
         if action:
             action_performed = True  # Eine Aktion wurde ausgeführt
-
+            reset_input()
             # Verarbeite die Aktion
             if action == "Q":
                 log_manager.add_entry("Spiel beendet.")

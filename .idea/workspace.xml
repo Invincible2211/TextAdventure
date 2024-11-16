@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="077b3956-b4a1-42b8-96eb-c7a4ec0b0ae1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/inventory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory_scene.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log_scene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/log_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_scene.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +72,7 @@
       <updated>1731682531021</updated>
       <workItem from="1731682532140" duration="11000" />
       <workItem from="1731758533791" duration="16001000" />
-      <workItem from="1731784743935" duration="11553000" />
+      <workItem from="1731784743935" duration="13277000" />
     </task>
     <servers />
   </component>
