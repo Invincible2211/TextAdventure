@@ -3,7 +3,7 @@ from Scene import Scene
 
 class MapScene(Scene):
     def __init__(self, map_manager):
-        super().__init__(map_manager.width, map_manager.height)
+        super().__init__(map_manager.width, map_manager.height, "<KARTE>")
         self.map_manager = map_manager
 
     def refresh(self):

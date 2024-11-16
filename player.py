@@ -1,3 +1,6 @@
+import ui_manager
+
+
 class Player:
     def __init__(self, start_x, start_y, symbol="@"):
         self.x = start_x

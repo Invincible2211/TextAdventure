@@ -1,7 +1,8 @@
 class Scene:
-    def __init__(self, width, height, fill_char=" "):
+    def __init__(self, width, height, title="", fill_char=" "):
         self.width = width
         self.height = height
+        self.title = title
         self.fill_char = fill_char
         self.content = []
 
@@ -12,3 +13,6 @@ class Scene:
         if 0 <= index < len(self.content):
             return ''.join(self.content[index])
         return self.fill_char * self.width
+
+    def get_title(self):
+        return self.title

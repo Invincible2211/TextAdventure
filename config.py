@@ -5,15 +5,16 @@ class Config:
     SUB_SCENE_WIDTH = 50
     SUB_SCENE_HEIGHT = SCENE_HEIGHT + 2 + ACTIONS_HEIGHT
     PADDING = 3
+    ACTION_DELAY = 0.2
     MAX_LOG_ENTRIES = SCENE_HEIGHT + 6
     MAP_ACTIONS = [
-        "Aktionen:",
+        "Steuerung:",
         "[W] Hoch, [A] Links, [S] Runter, [D] Rechts",
         "[I] Inventar, [O] Optionen",
         "Drücke 'Q' zum Beenden."
     ]
     INVENTORY_ACTIONS = [
-        "Aktionen:",
+        "",
         "Drücke [B], um zurückzukehren.",
         " ",
         " "
