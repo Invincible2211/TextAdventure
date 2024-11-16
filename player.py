@@ -19,8 +19,8 @@ class Player:
             new_x += 1
 
         # Bewegung prüfen
-        if map_manager.get_tile(new_x, new_y) == ".":
-            map_manager.update_tile(self.x, self.y, ".")  # Altes Feld freigeben
+        if map_manager.get_tile(new_x, new_y) == " ":
+            map_manager.update_tile(self.x, self.y, " ")  # Altes Feld freigeben
             map_manager.update_tile(new_x, new_y, self.symbol)  # Neues Feld besetzen
             self.x, self.y = new_x, new_y
             return True
