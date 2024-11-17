@@ -6,3 +6,7 @@ class ActionContainer(Scene):
         super().__init__(Config.SCENE_WIDTH, Config.ACTIONS_HEIGHT)
         self.dirty = True
         self.content = Config.MAP_ACTIONS
+
+    def set_actions(self, actions):
+        self.content = actions
+        self.dirty = True

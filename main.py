@@ -12,7 +12,7 @@ from ui.sub_scene.log_scene import LogScene
 from map_manager import MapManager
 from ui.scenes.map_scene import MapScene
 from player import Player
-from ui.ui_manager import UIManager
+from ui.ui_manager import UIManager, clear_screen
 
 # Für Unix (Linux/macOS)
 if os.name == 'posix':
@@ -63,11 +63,10 @@ class Game:
 
         LogManager.add_entry("Spiel gestartet.")
 
-        self.actions_container = ActionContainer()
+        self.actions = ActionContainer()
 
         self.scene = None
         self.sub_scene = None
-        self.actions = None
 
         # Initialzustand
         self.state = ""
@@ -103,6 +102,7 @@ class Game:
         # Cursor wieder einblenden
         sys.stdout.write("\033[?25h")
         sys.stdout.flush()
+        clear_screen()
 
     def main_menu(self):
         LogManager.add_entry("Hauptmenü geöffnet.")
@@ -161,15 +161,6 @@ class Game:
         if not self.player.move(action, self.map_manager):
             LogManager.add_entry(f"Bewegung nach {action} blockiert.")
 
-    def set_scene(self, scene):
-        self.scene = scene
-
-    def set_sub_scene(self, sub_scene):
-        self.sub_scene = sub_scene
-
-    def set_actions(self, actions):
-        self.actions = actions
-
     def switch_state(self, state):
         self.state = state
         if self.state == "MainMenu":
@@ -181,9 +172,9 @@ class Game:
         elif self.state == "StartDialog":
             pass
         elif self.state == "MainGame":
-            self.set_scene(self.map_scene)
-            self.set_sub_scene(self.log_scene)
-            self.set_actions(self.actions_container)
+            self.scene = self.map_scene
+            self.sub_scene = self.log_scene
+            self.actions.set_actions(Config.MAP_ACTIONS)
         elif self.state == "Inventory":
             LogManager.add_entry("Inventar geöffnet.")
             inventory = Inventory()
@@ -191,8 +182,8 @@ class Game:
             inventory.add_item("Schild")
             inventory_scene = InventoryScene(inventory)
             inventory_scene.refresh()
-            self.set_sub_scene(inventory_scene)
-            self.set_actions(self.actions_container)
+            self.sub_scene = inventory_scene
+            self.actions.set_actions(Config.INVENTORY_ACTIONS)
         elif self.state == "Options":
             pass
         elif self.state == "Exit":
