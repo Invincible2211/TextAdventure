@@ -89,3 +89,9 @@ class MapManager(Observable):
             visible_map.append([self.fill_char] * self.width)
 
         return visible_map
+
+    def is_within_bounds(self, x, y):
+        """
+        Überprüft, ob die angegebenen Koordinaten innerhalb der Grenzen der Karte liegen.
+        """
+        return 0 <= x < len(self.map_data[0]) and 0 <= y < len(self.map_data)

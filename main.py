@@ -61,6 +61,11 @@ class Game:
         self.log_scene = LogScene()
         log_manager.register_observer(self.log_scene)
 
+        self.player_inventory = Inventory()
+        self.inventory_scene = InventoryScene()
+
+        self.player_inventory.register_observer(self.inventory_scene)
+
         LogManager.add_entry("Spiel gestartet.")
 
         self.actions = ActionContainer()
@@ -133,11 +138,13 @@ class Game:
         self.state = "MainGame"
 
     def main_game(self):
-        action = get_user_input(["Q", "W", "A", "S", "D", "I", "O"])
+        action = get_user_input(["Q", "W", "A", "S", "D", "E", "I", "O"])
         if action == "Q":
             self.switch_state("Exit")
         elif action in ["W", "A", "S", "D"]:
             self.handle_player_movement(action)
+        elif action == "E":
+            LogManager.add_entry(f"Interaktionsversuch von {self.player.name}: {self.player.check_tile_in_front(self.map_manager)}")
         elif action == "I":
             self.switch_state("Inventory")
         elif action == "O":
@@ -177,12 +184,9 @@ class Game:
             self.actions.set_actions(Config.MAP_ACTIONS)
         elif self.state == "Inventory":
             LogManager.add_entry("Inventar geöffnet.")
-            inventory = Inventory()
-            inventory.add_item("Schwert")
-            inventory.add_item("Schild")
-            inventory_scene = InventoryScene(inventory)
-            inventory_scene.refresh()
-            self.sub_scene = inventory_scene
+            self.player_inventory.add_item("Schwert")
+            self.player_inventory.add_item("Schild")
+            self.sub_scene = self.inventory_scene
             self.actions.set_actions(Config.INVENTORY_ACTIONS)
         elif self.state == "Options":
             pass

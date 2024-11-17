@@ -8,6 +8,7 @@ class Player:
         self.name = name
         self.symbol = symbol
         self.previous_tile = " "
+        self.last_direction = None
 
     def move(self, direction, map_manager):
         """
@@ -23,6 +24,7 @@ class Player:
         elif direction == 'D':  # Rechts
             new_x += 1
 
+        self.last_direction = direction
         # Erlaubte Tiles
         allowed_tiles = [" ", "#"]
 
@@ -38,3 +40,29 @@ class Player:
             LogManager.add_entry(f"\033[31m{self.name}\033[0m bewegte sich nach {direction}.")
             return True
         return False
+
+    def check_tile_in_front(self, map_manager, target_symbol="*"):
+        """
+        Prüft, ob sich vor dem Spieler in der letzten Bewegungsrichtung das Zielzeichen befindet.
+        """
+        if not self.last_direction:
+            return False  # Keine Bewegungsrichtung vorhanden
+
+        # Koordinaten vor der letzten Bewegung berechnen
+        check_x, check_y = self.x, self.y
+
+        if self.last_direction == 'W':  # Hoch
+            check_y -= 1
+        elif self.last_direction == 'A':  # Links
+            check_x -= 1
+        elif self.last_direction == 'S':  # Runter
+            check_y += 1
+        elif self.last_direction == 'D':  # Rechts
+            check_x += 1
+
+        # Überprüfen, ob der Spieler sich am Rand der Karte befindet
+        if not map_manager.is_within_bounds(check_x, check_y):
+            return False  # Außerhalb der Karte
+
+        # Prüfen, ob das Tile vor dem Spieler das Zielzeichen enthält
+        return map_manager.get_tile(check_x, check_y) == target_symbol
