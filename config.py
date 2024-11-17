@@ -10,8 +10,8 @@ class Config:
     MAP_ACTIONS = [
         "Steuerung:",
         "[W] Hoch, [A] Links, [S] Runter, [D] Rechts",
-        "[I] Inventar, [O] Optionen [T] Team",
-        "Drücke 'Q' zum Beenden."
+        "[E] Interagieren, [I] Inventar, [T] Team, [O] Optionen",
+        "\033[31mDrücke 'Q' zum Beenden.\033[0m"
     ]
     INVENTORY_ACTIONS = [
         "",

@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="077b3956-b4a1-42b8-96eb-c7a4ec0b0ae1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/observable.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/action_container.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/scenes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/scenes/map_scene.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/sub_scene/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/scene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dialog_scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/scenes/dialog_scene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory_scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/sub_scene/inventory_scene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/log_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log_scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/sub_scene/log_scene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_scene.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,21 +51,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\HSB\PythonFDS\ui" />
+      <recent name="E:\HSB\PythonFDS\ui\scene" />
+      <recent name="E:\HSB\PythonFDS\ui\sub_scene" />
       <recent name="E:\HSB\PythonFDS" />
     </key>
   </component>
@@ -72,7 +90,9 @@
       <updated>1731682531021</updated>
       <workItem from="1731682532140" duration="11000" />
       <workItem from="1731758533791" duration="16001000" />
-      <workItem from="1731784743935" duration="13277000" />
+      <workItem from="1731784743935" duration="14179000" />
+      <workItem from="1731808695036" duration="391000" />
+      <workItem from="1731843579015" duration="10681000" />
     </task>
     <servers />
   </component>

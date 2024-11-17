@@ -1,7 +1,10 @@
 from config import Config
+from observable import Observable
 
-class MapManager:
+
+class MapManager(Observable):
     def __init__(self, fill_char=" "):
+        super().__init__()
         self.width = Config.SCENE_WIDTH
         self.height = Config.SCENE_HEIGHT
         self.fill_char = fill_char
@@ -39,6 +42,7 @@ class MapManager:
         """
         if 0 <= y < len(self.map_data) and 0 <= x < len(self.map_data[0]):
             self.map_data[y][x] = char
+            self.notify_observers(self.get_visible_map())
 
     def get_tile(self, x, y):
         """
@@ -62,6 +66,7 @@ class MapManager:
             self.scroll_y = max(0, player_y - self.height // 2)
         elif player_y - self.scroll_y > self.height // 2:
             self.scroll_y = min(len(self.map_data) - self.height, player_y - self.height // 2)
+        self.notify_observers(self.get_visible_map())
 
     def get_visible_map(self):
         """

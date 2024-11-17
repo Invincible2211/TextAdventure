@@ -5,6 +5,7 @@ class Scene:
         self.title = title
         self.fill_char = fill_char
         self.content = []
+        self.dirty = False
 
     def get_line(self, index):
         """

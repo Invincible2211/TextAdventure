@@ -1,37 +1,46 @@
-import log_scene
-import ui_manager
+from observable import Observable
 
-
-class LogManager:
-
-
+class LogManager(Observable):
+    logs = []
+    full_log = []
+    max_entries = 0
 
     def __init__(self, max_entries):
-        self.logs = []
-        self.full_log = []
-        self.max_entries = max_entries
-        self.scene = None
+        super().__init__()
+        LogManager.max_entries = max_entries
 
-    def add_entry(self, message):
+    @staticmethod
+    def add_entry(message):
         """
-        Fügt einen neuen Eintrag zum Log hinzu.
+        Fügt einen neuen Eintrag zum Log hinzu und benachrichtigt alle Observer.
         """
-        self.logs.append(message)
-        if len(self.logs) > self.max_entries:
-            self.full_log.append(self.logs.pop(0))
-            ui_manager.sub_scene_dirty = True
-        if self.scene is not None:
-            self.scene.update()
+        # Wir greifen direkt auf die statischen Log-Listen zu
+        LogManager.logs.append(message)
+        if len(LogManager.logs) > LogManager.max_entries:
+            LogManager.full_log.append(LogManager.logs.pop(0))
 
-    def get_logs(self):
+        # Benachrichtige alle Observer (Beobachter) über die Änderung der Logs
+        # Hier wird eine Instanz von LogManager benötigt, um die Benachrichtigung zu senden
+        if hasattr(LogManager, 'instance') and LogManager.instance:
+            LogManager.instance.notify_observers()
+
+    @staticmethod
+    def get_logs():
         """
         Gibt die aktuellen Log-Einträge zurück.
         """
-        return self.logs
+        return LogManager.logs
 
-    def get_full_log(self):
-        return self.full_log
+    @staticmethod
+    def get_full_log():
+        """
+        Gibt alle Logs zurück.
+        """
+        return LogManager.full_log
 
-    def add_scene(self, scene:log_scene.LogScene):
-        self.scene = scene
-
+    @staticmethod
+    def set_instance(instance):
+        """
+        Setzt eine Instanz von LogManager, die für das Benachrichtigen von Beobachtern verwendet wird.
+        """
+        LogManager.instance = instance
