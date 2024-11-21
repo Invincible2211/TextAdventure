@@ -7,6 +7,13 @@ class InventoryScene(Scene):
         super().__init__(Config.SUB_SCENE_WIDTH, Config.SUB_SCENE_HEIGHT, "<INVENTAR>")
         self.dirty = True
 
-    def update(self, data):
-        self.content = [''.join(row) for row in data]
+    def update(self, data, cursor):
+        self.content = []
+
+        for i, item in enumerate(data):
+            if i == cursor:
+                self.content.append(f"> {item}")  # Cursor-Hinweis
+            else:
+                self.content.append(f"  {item}")  # Standard-Offset
+
         self.dirty = True

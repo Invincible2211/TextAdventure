@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="077b3956-b4a1-42b8-96eb-c7a4ec0b0ae1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fight_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/fight_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/scenes/fight_scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/scenes/fight_scene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/sub_scene/inventory_scene.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/sub_scene/inventory_scene.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +80,7 @@
       <workItem from="1731758533791" duration="16001000" />
       <workItem from="1731784743935" duration="14179000" />
       <workItem from="1731808695036" duration="391000" />
-      <workItem from="1731843579015" duration="13906000" />
+      <workItem from="1731843579015" duration="16076000" />
     </task>
     <servers />
   </component>

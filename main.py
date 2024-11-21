@@ -6,6 +6,7 @@ import keyboard
 from config import Config
 from inventory import Inventory
 from ui.action_container import ActionContainer
+from ui.scenes.fight_scene import FightScene
 from ui.sub_scene.inventory_scene import InventoryScene
 from log_manager import LogManager
 from ui.sub_scene.log_scene import LogScene
@@ -66,6 +67,8 @@ class Game:
 
         self.player_inventory.register_observer(self.inventory_scene)
 
+        self.fight_scene = FightScene()
+
         LogManager.add_entry("Spiel gestartet.")
 
         self.actions = ActionContainer()
@@ -98,6 +101,8 @@ class Game:
                 self.inventory()
             elif self.state == "Options":
                 self.options()
+            elif self.state == "Fight":
+                self.fight()
             elif self.state == "Exit":
                 self.exit_game()
             start_time = time.time()
@@ -151,13 +156,22 @@ class Game:
             self.switch_state("Options")
 
     def inventory(self):
-        action = get_user_input(["B"])
+        action = get_user_input(["E", "Up", "Down", "B"])
+        if action == "E":
+            LogManager.add_entry(f"Item ausgewählt: {self.player_inventory.get_selected_item()}")
+        if action == "Up":
+            self.player_inventory.cursor_up()
+        if action == "Down":
+            self.player_inventory.cursor_down()
         if action == "B":
             self.switch_state("MainGame")
 
     def options(self):
         LogManager.add_entry("Optionen geöffnet.")
-        # Optionenlogik (Platzhalter)
+        self.state = "MainGame"
+
+    def fight(self):
+        LogManager.add_entry("Kampf begonnen")
         self.state = "MainGame"
 
     def exit_game(self):

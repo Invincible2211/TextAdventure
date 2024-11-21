@@ -14,10 +14,10 @@ class Config:
         "\033[31mDrücke 'Q' zum Beenden.\033[0m"
     ]
     INVENTORY_ACTIONS = [
-        "",
-        "Drücke [B], um zurückzukehren.",
-        " ",
-        " "
+        "Wähle ein Item mit [E] aus",
+        "Drücke [↑] um den Cursor nach Oben zu bewegen",
+        "Drücke [↓] um den Cursor nach Unten zu bewegen",
+        "\033[31mDrücke [B], um zurückzukehren.\033[0m"
     ]
     TITLE = [
         "  ___              _  _                          ",
