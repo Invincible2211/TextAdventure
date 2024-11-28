@@ -50,7 +50,7 @@ class UIManager:
         """
         move_cursor_to_position(1, 1)
         title = "" + scene.get_title()
-        print(" " * self.padding + f"╔{title.center(self.scene_width + count_ansi_length(title),"═")}╗")
+        print(" " * self.padding + f"╔{title.center(self.scene_width + count_ansi_length(title),'═')}╗")
         for i in range(self.scene_height):
             scene_line = "" + scene.get_line(i)
             print(" " * self.padding + f"║{scene_line.ljust(self.scene_width + count_ansi_length(scene_line))}║")
@@ -61,7 +61,7 @@ class UIManager:
         move_cursor_to_position(1, self.scene_height + 3)
 
         # Aktionen rendern
-        print(" " * self.padding + f"╔{'<AKTIONEN>'.center(self.scene_width, "═")}╗")
+        print(" " * self.padding + f"╔{'<AKTIONEN>'.center(self.scene_width, '═')}╗")
 
         for i in range(Config.ACTIONS_HEIGHT):
             action_text = actions.get_line(i)[:self.scene_width - 3]
