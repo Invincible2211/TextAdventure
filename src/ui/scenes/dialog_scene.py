@@ -1,4 +1,4 @@
-from ui.scene import Scene
+from src.ui.scene import Scene
 
 
 class DialogScene(Scene):

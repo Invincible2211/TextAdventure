@@ -1,6 +1,6 @@
-from config import Config
-from log_manager import LogManager
-from ui.scene import Scene
+from src.config import Config
+from src.log_manager import LogManager
+from src.ui.scene import Scene
 
 
 class LogScene(Scene):

@@ -1,5 +1,5 @@
-from ui.scene import Scene
-from config import Config
+from src.ui.scene import Scene
+from src.config import Config
 
 
 class InventoryScene(Scene):

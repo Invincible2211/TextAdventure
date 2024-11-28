@@ -1,5 +1,5 @@
-from config import Config
-from ui.scene import Scene
+from src.config import Config
+from src.ui.scene import Scene
 
 class ActionContainer(Scene):
     def __init__(self):

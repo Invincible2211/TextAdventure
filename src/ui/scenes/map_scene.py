@@ -1,6 +1,6 @@
-from config import Config
-import  ui.scenes
-from ui.scene import Scene
+from src.config import Config
+import src.ui.scenes
+from src.ui.scene import Scene
 
 
 class MapScene(Scene):

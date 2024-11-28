@@ -1,7 +1,7 @@
 import os
 import re
 
-from config import Config
+from ..config import Config
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')

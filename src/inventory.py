@@ -1,4 +1,4 @@
-from observable import Observable
+from .observable import Observable
 
 
 class Inventory(Observable):

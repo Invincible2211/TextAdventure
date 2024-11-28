@@ -1,5 +1,5 @@
-from config import Config
-from observable import Observable
+from .config import Config
+from .observable import Observable
 
 
 class MapManager(Observable):
