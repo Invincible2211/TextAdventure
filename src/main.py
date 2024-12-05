@@ -5,6 +5,7 @@ import keyboard
 
 from config import Config
 from inventory import Inventory
+from src.ui.scenes.main_menu import MainMenuScene
 from ui.action_container import ActionContainer
 from ui.scenes.fight_scene import FightScene
 from ui.sub_scene.inventory_scene import InventoryScene
@@ -19,6 +20,7 @@ from ui.ui_manager import UIManager, clear_screen
 if os.name == 'posix':
     import termios
 
+
     def reset_input():
         """Leert den Eingabepuffer auf Unix-Systemen (Linux/macOS)."""
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
@@ -26,6 +28,7 @@ if os.name == 'posix':
 # Für Windows
 elif os.name == 'nt':
     import msvcrt
+
 
     def reset_input():
         """Leert den Eingabepuffer auf Windows-Systemen."""
@@ -73,12 +76,14 @@ class Game:
 
         self.actions = ActionContainer()
 
+        self.main_menu_scene = MainMenuScene()
+
         self.scene = None
         self.sub_scene = None
 
         # Initialzustand
         self.state = ""
-        self.switch_state("MainGame")
+        self.switch_state("MainMenu")
         self.running = True
 
     def main(self):
@@ -149,7 +154,8 @@ class Game:
         elif action in ["W", "A", "S", "D"]:
             self.handle_player_movement(action)
         elif action == "E":
-            LogManager.add_entry(f"Interaktionsversuch von {self.player.name}: {self.player.check_tile_in_front(self.map_manager)}")
+            LogManager.add_entry(
+                f"Interaktionsversuch von {self.player.name}: {self.player.check_tile_in_front(self.map_manager)}")
         elif action == "I":
             self.switch_state("Inventory")
         elif action == "O":
@@ -184,8 +190,10 @@ class Game:
 
     def switch_state(self, state):
         self.state = state
+        LogManager.add_entry("State gewechselt zu " + state)
         if self.state == "MainMenu":
-            pass
+            self.scene = self.main_menu_scene
+            LogManager.add_entry("Hauptmenü geöffnet")
         elif self.state == "CreateGame":
             pass
         elif self.state == "ResumeGame":
@@ -206,6 +214,7 @@ class Game:
             pass
         elif self.state == "Exit":
             pass
+
 
 # Hauptprogramm
 if __name__ == "__main__":

@@ -1,5 +1,4 @@
 from src.config import Config
-import src.ui.scenes
 from src.ui.scene import Scene
 
 

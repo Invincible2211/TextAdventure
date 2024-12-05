@@ -1,7 +1,8 @@
 import os
-import re
 
+from .utils.frame_generator import frame_text
 from ..config import Config
+
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -12,11 +13,6 @@ def move_cursor_to_position(x, y):
     Bewegt den Cursor an die Position (x, y) im Terminal.
     """
     print(f"\033[{y};{x}H", end="")
-
-# Funktion, um die Länge der ANSI-Sequenzen zu berechnen
-def count_ansi_length(text):
-    ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-    return sum(len(seq) for seq in ansi_escape.findall(text))
 
 
 class UIManager:
@@ -49,37 +45,33 @@ class UIManager:
         Rendert eine allgemeine Szene innerhalb der Karten-Border.
         """
         move_cursor_to_position(1, 1)
-        title = "" + scene.get_title()
-        print(" " * self.padding + f"╔{title.center(self.scene_width + count_ansi_length(title),'═')}╗")
-        for i in range(self.scene_height):
-            scene_line = "" + scene.get_line(i)
-            print(" " * self.padding + f"║{scene_line.ljust(self.scene_width + count_ansi_length(scene_line))}║")
-        print(" " * self.padding + f"╚{'═' * self.scene_width}╝")
+        scene_lines = frame_text(scene, self.scene_width, self.scene_height, scene.get_title())
+        for line in scene_lines:
+            print(" " * self.padding + line)
 
     def render_actions(self, actions):
-
+        """
+        Rendert die Aktionen im vorgesehenen Bereich.
+        """
         move_cursor_to_position(1, self.scene_height + 3)
 
-        # Aktionen rendern
-        print(" " * self.padding + f"╔{'<AKTIONEN>'.center(self.scene_width, '═')}╗")
-
-        for i in range(Config.ACTIONS_HEIGHT):
-            action_text = actions.get_line(i)[:self.scene_width - 3]
-            print(
-                f" " * self.padding + f"║ {action_text.ljust(self.scene_width - 2 + count_ansi_length(action_text))} ║")
-
-        print(" " * self.padding + f"╚{'═' * self.scene_width}╝")
+        action_lines = frame_text(actions, self.scene_width, Config.ACTIONS_HEIGHT, "<AKTIONEN>")
+        for line in action_lines:
+            print(" " * self.padding + line)
 
     def render_sub_scene(self, sub_scene, actions):
-        # Log-Border oben
-        move_cursor_to_position(self.scene_width + 2 * self.padding + 1, 1)
-        title = "" + sub_scene.get_title()
-        print(f"╔{title.center(self.sub_scene_width + count_ansi_length(title),'═')}╗")
-        for i in range(self.sub_scene_height):
-            sub_scene_content = "" + sub_scene.get_line(i)
-            sub_scene_line = sub_scene_content if len(sub_scene_content) + count_ansi_length(sub_scene_content) == self.sub_scene_width else " " + sub_scene_content
-            move_cursor_to_position(self.scene_width + 2 * self.padding + 1, i + 2)
-            print(f"║{sub_scene_line.ljust(self.sub_scene_width + count_ansi_length(sub_scene_line))}║")
-        # sub scene border unten
-        move_cursor_to_position(self.scene_width + 2 * self.padding + 1, self.sub_scene_height + 2)
-        print(f"╚{'═' * self.sub_scene_width}╝")
+        """
+        Rendert die Sub-Szene mit den entsprechenden Log-Inhalten.
+        Achtet darauf, die Zeilen an die richtige Position zu setzen.
+        """
+        # Holen der gerenderten Zeilen für die Sub-Szene
+        sub_scene_lines = frame_text(sub_scene, self.sub_scene_width, self.sub_scene_height, sub_scene.get_title())
+
+        # Startposition für die Sub-Szene
+        start_y_position = 1  # Ausgangspunkt für den Y-Cursor
+
+        # Drucken der gerenderten Sub-Szene unter Beachtung der Cursorposition
+        for line in sub_scene_lines:
+            move_cursor_to_position(self.scene_width + 2 * self.padding + 1, start_y_position)
+            print(line)
+            start_y_position += 1  # Erhöht die Y-Position für die nächste Zeile
